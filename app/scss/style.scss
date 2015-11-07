@@ -1,0 +1,29 @@
+@import 'partials/variables';
+@import 'partials/mixins';
+@import 'partials/layout';
+@import 'partials/_placeholder';
+
+*, *::after, *::before {
+	@include box-sizing(border-box);
+}
+
+body{
+	font: {
+		size: 100%;
+		family: $primary-font;
+	}
+	// color: green;
+	// background-color: blue;
+}
+
+header{
+	h1{
+		@include font-size(20px);
+	}
+
+	@include MQ(M){
+		h1{
+			@include font-size(26px);
+		}
+	}
+}

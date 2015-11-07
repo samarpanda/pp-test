@@ -1,0 +1,46 @@
+@function calculateRem($size){
+	$remSize: $size / 16px;
+	@return $remSize * 1rem;
+}
+
+@mixin font-size($size){
+	font-size: $size;
+	font-size: calculateRem($size);
+}
+
+@mixin box-sizing($box-model){
+	-webkit-box-sizing: $box-model;
+	-moz-box-sizing: $box-model;
+	box-sizing: $box-model;
+}
+
+@mixin border-radius($radius){
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+	backgroud-clip: padding-box;
+}
+
+@mixin opacity($opacity){
+	opacity: $opacity;
+}
+
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin abs-pos($top: auto, $right: auto, $bottom: auto, $left: auto){
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+@mixin clearfix{
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}

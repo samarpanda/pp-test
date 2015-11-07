@@ -1,0 +1,11 @@
+/**
+ * Silent class selector. This way nothing gets
+ * compiled to CSS unless we actually use it.
+ */
+%clearfix {
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
