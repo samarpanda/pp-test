@@ -24,7 +24,7 @@ var App = React.createClass({
 	componentDidMount () {
 
 		fetchUsers((contacts) => {
-			console.log(contacts);
+			// console.log(contacts);
 			this.setState({
 				contacts,
 				loaded: true
@@ -38,7 +38,7 @@ var App = React.createClass({
 	},
 
 	keypressHandler(e){
-		console.log(e);
+		// console.log(e);
 	},
 
 	render() {

@@ -25,7 +25,7 @@ var MySchema = new Schema({
 });
 var Contact = mongoose.model('Contact', MySchema);
 
-app.route('/contacts/:id')
+app.route('/contacts')
 .get(function(req, res, next){
 	mongoose.model('Contact').find(function(error, contacts){
 		contacts.sort(function(a, b){
@@ -46,7 +46,9 @@ app.route('/contacts/:id')
 	person.save(function(error, contact){
 		res.end(JSON.stringify(contact));
 	});
-})
+});
+
+app.route('/contacts/:id')
 .put(function(req, res){
 	var obj = req.body;
 	Contact.findByIdAndUpdate(req.params.id, {name:obj.name, phone:obj.phone}, function(err, contact){
