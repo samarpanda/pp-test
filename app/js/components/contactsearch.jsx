@@ -12,11 +12,19 @@ var fetchUsers = (cb) => {
 	});
 };
 
+var filterUsers = (query, cb) => {
+	xhr.getJSON(`${API}/contacts/filter/${query}`, (err, res) => {
+		if(!err)
+			cb(res);
+	});
+};
+
 var App = React.createClass({
 
 	getInitialState() {
 		return {
 			contacts: [],
+			query: '',
 			loaded: false
 		};
 	},
@@ -24,30 +32,28 @@ var App = React.createClass({
 	componentDidMount () {
 
 		fetchUsers((contacts) => {
-			// console.log(contacts);
 			this.setState({
 				contacts,
+				query: this.state.query,
 				loaded: true
 			});
 			this.renderContacts();
 		});
+
+		// filterUsers('Sa', (contacts) => {
+		// 	console.log(contacts);
+		// });
 	},
 
 	renderContacts(){
 		ReactDOM.render(<Contactlist contacts={this.state.contacts} />, document.getElementById('contacts'), () => {});
 	},
 
-	keypressHandler(e){
-		// console.log(e);
-	},
-
 	render() {
 		if(! this.state.loaded)
 			return <div>Loading</div>;
 
-		return <div>
-			<input onKeyPress={this.keypressHandler} />
-		</div>;
+		return <div></div>;
 	}
 
 });

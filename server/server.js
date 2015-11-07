@@ -62,7 +62,7 @@ app.route('/contacts/:id')
 	});
 });
 
-app.route('/filter/:name')
+app.route('/contacts/filter/:name')
 	.get(function(req, res){
 		var obj = req.params;
 		Contact.find({name: new RegExp(obj.name, 'i')}, function(err, contacts){
