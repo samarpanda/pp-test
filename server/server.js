@@ -25,7 +25,7 @@ var MySchema = new Schema({
 });
 var Contact = mongoose.model('Contact', MySchema);
 
-app.route('/contacts')
+app.route('/contacts/:id')
 .get(function(req, res, next){
 	mongoose.model('Contact').find(function(error, contacts){
 		contacts.sort(function(a, b){
@@ -49,15 +49,24 @@ app.route('/contacts')
 })
 .put(function(req, res){
 	var obj = req.body;
-	Contact.findByIdAndUpdate(obj.id, {name:obj.name, phone:obj.phone}, function(err, contact){
+	Contact.findByIdAndUpdate(req.params.id, {name:obj.name, phone:obj.phone}, function(err, contact){
 		res.end(JSON.stringify(contact));
 	});
 })
 .delete(function(req, res, next){
-	Contact.findByIdAndRemove( req.body.id, function(err, contact){
+	var obj = req.params;
+	Contact.findByIdAndRemove( obj.id, function(err, contact){
 		res.end(JSON.stringify(contact));
 	});
 });
+
+app.route('/filter/:name')
+	.get(function(req, res){
+		var obj = req.params;
+		Contact.find({name: new RegExp(obj.name, 'i')}, function(err, contacts){
+			res.end(JSON.stringify(contacts));
+		});
+	});
 
 // app.route('/reset')
 // .get(function(req, res, next){
