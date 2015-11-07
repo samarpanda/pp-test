@@ -1,0 +1,1 @@
+var xhr = require('../lib/xhr');
