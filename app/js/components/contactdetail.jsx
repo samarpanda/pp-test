@@ -6,7 +6,7 @@ var App = React.createClass({
 	},
 	render() {
 		var dContact = this.props.contact;
-		return <div>{dContact.name}</div>;
+		return <div>{dContact.name}<br/>{dContact.phone}</div>;
 	}
 });
 
