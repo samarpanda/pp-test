@@ -38,10 +38,8 @@ var searchResultSets =
 		switchLatest();
 
 var AppInit = function(){
-
 	searchResultSets.forEach(
 		function(resultSet){
-			// console.log('>>', resultSet, resultSet.length);
 			displayResult.value = JSON.stringify(resultSet, null, 2);
 		},
 		function(error){

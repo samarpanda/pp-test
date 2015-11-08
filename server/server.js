@@ -2,9 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-// var dbDump = require('./contacts_data.json').data;
-// console.log(dbDump);
-
 var app = express();
 var hack = require('./hack').allowCrossDomain;
 
@@ -14,7 +11,7 @@ app.use(hack);
 app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//
+//mongo
 mongoose.connect('mongodb://localhost/mymongodb');
 var Schema = mongoose.Schema,
 	ObjectId = Schema.ObjectId;
@@ -69,12 +66,5 @@ app.route('/contacts/filter/:name')
 			res.send(JSON.stringify(contacts));
 		});
 	});
-
-// app.route('/reset')
-// .get(function(req, res, next){
-// 	Contact.remove({}, function(){
-// 		console.log('deleted all');
-// 	});
-// });
 
 app.listen(3000);

@@ -40,9 +40,6 @@ var App = React.createClass({
 			this.renderContacts();
 		});
 
-		// filterUsers('Sa', (contacts) => {
-		// 	console.log(contacts);
-		// });
 	},
 
 	renderContacts(){
