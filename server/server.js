@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var app = express();
 var hack = require('./hack').allowCrossDomain;
 var port = process.env.PORT || 3000;
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/mymongodb';
 
 //Allow cross origin hack
 app.use(hack);
@@ -13,7 +14,7 @@ app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //mongo
-mongoose.connect('mongodb://localhost/mymongodb', function(err){
+mongoose.connect(mongoURI, function(err){
 	if(err){
 		console.log("Couldn't connect to mongodb");
 		console.log('Error: ', err);
