@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 
 var app = express();
 var hack = require('./hack').allowCrossDomain;
+var port = process.env.PORT || 3000;
 
 //Allow cross origin hack
 app.use(hack);
@@ -72,5 +73,5 @@ app.route('/contacts/filter/:name')
 		});
 	});
 
-var http = app.listen(3000);
+var http = app.listen(port);
 exports.http = http;
