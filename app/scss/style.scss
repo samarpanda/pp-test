@@ -12,8 +12,6 @@ body{
 		size: 100%;
 		family: $primary-font;
 	}
-	// color: green;
-	// background-color: blue;
 }
 
 header{
@@ -24,6 +22,28 @@ header{
 	@include MQ(M){
 		h1{
 			@include font-size(26px);
+		}
+	}
+}
+
+.res{
+	position: relative;
+	min-width: $list-width;
+	.cdetail{
+		width: $detail-width;
+		position: relative;
+		margin-left: 0;
+	}
+	@include MQ(M){
+		.cdetail{
+			position: absolute;
+			margin-left: $list-width;
+			background-color: orange;
+		}
+	}
+	@include MQ(L){
+		.cdetail{
+			background-color: red;
 		}
 	}
 }
