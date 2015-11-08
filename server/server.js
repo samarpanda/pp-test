@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 mongoose.connect('mongodb://localhost/mymongodb');
 var Schema = mongoose.Schema,
 	ObjectId = Schema.ObjectId;
-//mongoose.model('contacts', {name: String});
+//mongoose.model('contacts', {name: 'val'});
 var MySchema = new Schema({
     name: String,
     phone: String

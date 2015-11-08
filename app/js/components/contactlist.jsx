@@ -33,14 +33,14 @@ var App = React.createClass({
 	deleteUsers (target) {
 		var contacts = this.state.contacts;
 		var withoutContact = contacts.filter(contact => contact._id !== target._id);
-		// deleteUser((target) => {
-			console.log('deleted');
-			this.setState({contacts: withoutContact});
-			if(selectedContactId === target._id){
-				var tmpContact = {};
-				this.renderDetailChild(tmpContact);
-			}
-		// });
+
+		//On delete update view
+		console.log('deleted: ', target.name);
+		this.setState({contacts: withoutContact});
+		if(selectedContactId === target._id){
+			var tmpContact = {};
+			this.renderDetailChild(tmpContact);
+		}
 	},
 
 	renderDetail(contact){
