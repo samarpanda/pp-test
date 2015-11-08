@@ -1,4 +1,5 @@
-## Address book
+## Address book [![Build Status](https://travis-ci.org/samarpanda/pp-test.svg?branch=master)](https://travis-ci.org/samarpanda/pp-test)
+
 
 Address book application. [Express][3] server and client using [react][4] & [rxjs][6]. [Babel][5] to transpile [ES2015][2] to ES5 and tooling supported by [webpack][1].
 

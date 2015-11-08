@@ -12,7 +12,12 @@ app.use(express.static('dist'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //mongo
-mongoose.connect('mongodb://localhost/mymongodb');
+mongoose.connect('mongodb://localhost/mymongodb', function(err){
+	if(err){
+		console.log("Couldn't connect to mongodb");
+		console.log('Error: ', err);
+	}
+});
 var Schema = mongoose.Schema,
 	ObjectId = Schema.ObjectId;
 //mongoose.model('contacts', {name: 'val'});
@@ -67,4 +72,5 @@ app.route('/contacts/filter/:name')
 		});
 	});
 
-app.listen(3000);
+var http = app.listen(3000);
+exports.http = http;
