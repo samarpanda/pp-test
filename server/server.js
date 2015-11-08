@@ -66,7 +66,7 @@ app.route('/contacts/filter/:name')
 	.get(function(req, res){
 		var obj = req.params;
 		Contact.find({name: new RegExp(obj.name, 'i')}, function(err, contacts){
-			res.end(JSON.stringify(contacts));
+			res.send(JSON.stringify(contacts));
 		});
 	});
 

@@ -4,8 +4,8 @@ var {API} = require('./constants');
 var xhr = require('./libs/xhr');
 
 var searchInput = document.getElementById('search');
-var keypresses = Observable.fromEvent(searchInput, 'keypress');
-// var displayResult = document.getElementById('result');
+var keypresses = Observable.fromEvent(searchInput, 'keyup');
+var displayResult = document.getElementById('result');
 
 var getContactSearchResults = function(query){
 	var canelled = false;
@@ -28,7 +28,8 @@ var searchResultSets =
 	keypresses.
 		throttle(10).
 		map(function(key){
-			return searchInput.value;
+				if(searchInput.value != '')
+					return searchInput.value;
 		}).
 		distinctUntilChanged().
 		map(function(query){
@@ -37,9 +38,11 @@ var searchResultSets =
 		switchLatest();
 
 var AppInit = function(){
+
 	searchResultSets.forEach(
 		function(resultSet){
-			console.log('>>', resultSet.length);
+			// console.log('>>', resultSet, resultSet.length);
+			displayResult.value = JSON.stringify(resultSet, null, 2);
 		},
 		function(error){
 			console.error(error);
