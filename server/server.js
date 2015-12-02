@@ -55,7 +55,7 @@ app.route('/contacts')
 app.route('/contacts/:id')
 .put(function(req, res){
 	var obj = req.body;
-	Contact.findByIdAndUpdate(req.params.id, {name:obj.name, phone:obj.phone}, function(err, contact){
+	Contact.findByIdAndUpdate(req.params.id, {name:obj.name, phone:obj.phone}, {new: true}, function(err, contact){
 		res.end(JSON.stringify(contact));
 	});
 })
