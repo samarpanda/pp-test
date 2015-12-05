@@ -31,12 +31,12 @@ Browser open url [http://localhost:3000][8]
 1. Search by contact name at the bottom. Implementation uses Observable concepts.
 
 ## Server
-Supporting CRUD using express. REST API.
+Implemented CRUD using express & MongoDB. REST API up & running on [heroku][11].
 
 1. Create contact
 ```text
 request
-url  => '/contacts'
+url  => 'https://heroku-pp-test.herokuapp.com/contacts'
 type => 'POST'
 {
   name: 'String',
@@ -54,7 +54,7 @@ response
 1. Get all contacts
 ```text
 request
-url  => '/contacts'
+url  => 'https://heroku-pp-test.herokuapp.com/contacts'
 type => 'GET'
 
 status => 200
@@ -72,7 +72,7 @@ response
 1. Update contact
 ```text
 request
-url  => '/contacts/:id'
+url  => 'https://heroku-pp-test.herokuapp.com/contacts/:id'
 type => 'PUT'
 {
   name: 'String',
@@ -91,7 +91,7 @@ response
 1. Delete contact
 ```text
 request
-url  => '/contacts/:id'
+url  => 'https://heroku-pp-test.herokuapp.com/contacts/:id'
 type => 'DELETE'
 
 response
@@ -104,7 +104,7 @@ response
 1. Filter by name
 ```text
 request
-url  => 'contacts/filter/:name'
+url  => 'https://heroku-pp-test.herokuapp.com/contacts/filter/:name'
 type => 'get'
 {
 	name: 'String'
@@ -121,14 +121,17 @@ response
 },...]
 ```
 
+## Demo
+
+Don't miss to check out the demo at [http://samarpanda.github.io/pp-test/][11]
+
 ## List of todos
 
 1. Create / Update from UI
 1. Combining search result & list view
-1. Test suite using `ava`
-1. Multiple browser testing using [karma] and saucelabs.
+1. Test suite using [ava][13]
+1. Multiple browser testing using [karma][7] and [saucelabs][9]
 1. Refactor the repetative codes
-1. Upload code to heroku
 
 
 [1]: https://webpack.github.io/
@@ -139,3 +142,9 @@ response
 [6]: https://github.com/Reactive-Extensions/RxJS
 [7]: http://karma-runner.github.io/
 [8]: http://localhost:3000
+[9]: https://saucelabs.com/
+[10]: http://heroku.com/
+[11]: http://samarpanda.github.io/pp-test/
+[12]: https://heroku-pp-test.herokuapp.com/
+[13]: https://www.npmjs.com/package/ava
+[14]: https://mongolab.com
