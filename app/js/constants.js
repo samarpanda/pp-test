@@ -1,3 +1,3 @@
 module.exports = {
-	API: ''
+	API: 'https://heroku-pp-test.herokuapp.com'
 };
