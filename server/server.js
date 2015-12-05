@@ -20,18 +20,19 @@ mongoose.connect(mongoURI, function(err){
 		console.log('Error: ', err);
 	}
 });
-var Schema = mongoose.Schema,
-	ObjectId = Schema.ObjectId;
-//mongoose.model('contacts', {name: 'val'});
-var MySchema = new Schema({
+
+var MySchema = new mongoose.Schema({
     name: String,
     phone: String
 });
-var Contact = mongoose.model('Contact', MySchema);
+var Contact = mongoose.model('test-collection', MySchema);
 
+/**
+ * Handle get & post requests
+ */
 app.route('/contacts')
 .get(function(req, res, next){
-	mongoose.model('Contact').find(function(error, contacts){
+	Contact.find(function(error, contacts){
 		contacts.sort(function(a, b){
 			if(a.name < b.name){
 				return -1;
@@ -52,6 +53,9 @@ app.route('/contacts')
 	});
 });
 
+/**
+ * Handle put & delete requests
+ */
 app.route('/contacts/:id')
 .put(function(req, res){
 	var obj = req.body;
@@ -66,6 +70,9 @@ app.route('/contacts/:id')
 	});
 });
 
+/**
+ * Handle filter requests
+ */
 app.route('/contacts/filter/:name')
 	.get(function(req, res){
 		var obj = req.params;
