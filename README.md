@@ -23,6 +23,13 @@ npm start
 ```
 Browser open url [http://localhost:3000][8]
 
+## Host html in github.io
+
+Pushing `dist` directory to github.io
+
+```shell
+git subtree push --prefix dist origin gh-pages
+```
 
 ## Client
 
@@ -127,7 +134,7 @@ Don't miss to check out the demo at [http://samarpanda.github.io/pp-test/][11]
 
 ## List of todos
 
-1. Create / Update from UI
+1. Update from UI
 1. Combining search result & list view
 1. Test suite using [ava][13]
 1. Multiple browser testing using [karma][7] and [saucelabs][9]
