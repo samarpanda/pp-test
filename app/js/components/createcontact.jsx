@@ -4,6 +4,13 @@ var ReactDOM = require('react-dom');
 var {API} = require('../constants');
 var xhr = require('../libs/xhr');
 
+var createContact = (obj, cb) => {
+	xhr.postJSON(`${API}/contacts`, obj, (err, res) => {
+		if(!err)
+			cb(res);
+	});
+};
+
 var App = React.createClass({
 	getInitialState(){
 		return {
@@ -24,6 +31,9 @@ var App = React.createClass({
 	handleSubmit(e){
 		e.preventDefault();
 		//POST data to server
+		createContact(this.state, (res) => {
+			console.log(res, " >> ");
+		});
 
 		//On success
 		this.setState({
