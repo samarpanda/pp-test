@@ -11,7 +11,12 @@ var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/mymongodb';
 app.use(hack);
 
 app.use(express.static('dist'));
-app.use(bodyParser.urlencoded({ extended: false }));
+
+/**
+ * bodyParser
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //mongo
 mongoose.connect(mongoURI, function(err){
