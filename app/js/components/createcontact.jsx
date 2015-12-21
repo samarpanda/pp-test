@@ -1,15 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var {API} = require('../constants');
-var xhr = require('../libs/xhr');
-
-var createContact = (obj, cb) => {
-	xhr.postJSON(`${API}/contacts`, obj, (err, res) => {
-		if(!err)
-			cb(res);
-	});
-};
+var createContact = require('../utils/ApiUtil').createContact;
 
 var App = React.createClass({
 	getInitialState(){

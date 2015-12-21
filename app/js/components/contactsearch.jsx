@@ -1,23 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var {API} = require('../constants');
-var xhr = require('../libs/xhr');
 var Contactlist = require('./contactlist.jsx').contactlist;
-
-var fetchUsers = (cb) => {
-	xhr.getJSON(`${API}/contacts`, (err, res) => {
-		if(!err)
-			cb(res);
-	});
-};
-
-var filterUsers = (query, cb) => {
-	xhr.getJSON(`${API}/contacts/filter/${query}`, (err, res) => {
-		if(!err)
-			cb(res);
-	});
-};
+var {fetchUsers, filterUsers} = require('../utils/ApiUtil');
 
 var App = React.createClass({
 

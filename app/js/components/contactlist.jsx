@@ -1,18 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var {API} = require('../constants');
-var xhr = require('../libs/xhr');
 var Contactdetail = require('./contactdetail.jsx').contactdetail;
+var deleteUser = require('../utils/ApiUtil.js').deleteUser;
 
 var selectedContactId = 0;
-
-var deleteUser = (cb) => {
-	xhr.deleteJSON(`${API}/contacts`, (err, res) => {
-		if(!err)
-			cb(res);
-	});
-};
 
 var App = React.createClass({
 
@@ -34,13 +26,19 @@ var App = React.createClass({
 		var contacts = this.state.contacts;
 		var withoutContact = contacts.filter(contact => contact._id !== target._id);
 
+		// TODO: Trigger callback function from xhr.js
+		deleteUser(target._id, function(e){
+			console.log('Successfully deleted', e);
+		});
+
 		//On delete update view
-		console.log('deleted: ', target.name);
+		console.log('deleted: ', target.name, target._id);
 		this.setState({contacts: withoutContact});
 		if(selectedContactId === target._id){
 			var tmpContact = {};
 			this.renderDetailChild(tmpContact);
 		}
+		
 	},
 
 	renderDetail(contact){
