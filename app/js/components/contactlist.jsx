@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var Contactdetail = require('./contactdetail.jsx').contactdetail;
-var deleteUser = require('../utils/ApiUtil.js').deleteUser;
+var {deleteUser} = require('../utils/ApiUtil.js');
 
 var selectedContactId = 0;
 
@@ -51,7 +51,7 @@ var App = React.createClass({
 	},
 
 	render () {
-
+		console.log('contactlist render >>');
 		var contacts = this.state.contacts.map((contact) => {
 			return <li key={contact._id}>
 				<span onClick={this.renderDetail.bind(this, contact)}>{contact.name}  </span>
@@ -59,11 +59,11 @@ var App = React.createClass({
 			</li>
 		});
 
-		return <div>
+		return (<div>
 			<ul>
 				{contacts}
 			</ul>
-			</div>;
+			</div>);
 	}
 
 });

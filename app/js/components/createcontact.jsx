@@ -20,12 +20,23 @@ var App = React.createClass({
 			'phone': e.target.value
 		});
 	},
+	validateForm(){
+		var name = this.state.name.trim();
+		var phone = this.state.phone.trim();
+		if(!name || !phone){
+			return false
+		}
+		return true;
+	},
 	handleSubmit(e){
 		e.preventDefault();
-		//POST data to server
-		createContact(this.state, (res) => {
-			console.log(res, " >> ");
-		});
+
+		if(!this.validateForm()){
+			return;
+		}
+		
+		//Parent component will POST data to server
+		this.props.onContactSubmit(this.state);
 
 		//On success
 		this.setState({
