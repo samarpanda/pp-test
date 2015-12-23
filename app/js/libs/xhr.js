@@ -27,7 +27,9 @@ exports.postJSON = (url, obj, cb) => {
 
 exports.deleteJSON = (url, cb) => {
   var req = new XMLHttpRequest();
-  req.onload = cb;
+  req.onload = function(){
+    cb(null, JSON.parse(req.response));
+  };
   req.open('DELETE', url);
   setToken(req);
   req.send();

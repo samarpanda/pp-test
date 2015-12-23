@@ -4,7 +4,7 @@ var ReactDOM = require('react-dom');
 var Contactlist = require('./contactlist.jsx').contactlist;
 var CreateContact = require('./createcontact.jsx').createcontact;
 
-var {createContact, fetchUsers, filterUsers} = require('../utils/ApiUtil');
+var {createContact, fetchUsers, filterUsers, deleteUser} = require('../utils/ApiUtil');
 
 var App = React.createClass({
 
@@ -17,7 +17,6 @@ var App = React.createClass({
 	},
 
 	loadContacts(){
-		console.log(" >>  load contacts");
 		fetchUsers((contacts) => {
 			this.setState({
 				contacts,
@@ -38,13 +37,14 @@ var App = React.createClass({
 		});
 	},
 
-	handleUpdateList(){
-
+	handleDeleteContact(data){
+		deleteUser(data._id, (res) => {
+			this.loadContacts();
+		});
 	},
 
 	renderContacts(){
-		console.log("Rendered >> ");
-		ReactDOM.render(<div><Contactlist onUpdate={this.handleUpdateList} contacts={this.state.contacts} /><CreateContact onContactSubmit={this.handleCreateContact} /></div>, document.getElementById('contacts'), () => {});
+		ReactDOM.render(<div><Contactlist contacts={this.state.contacts} onContactDelete={this.handleDeleteContact} /><CreateContact onContactSubmit={this.handleCreateContact} /></div>, document.getElementById('contacts'), () => {});
 	},
 
 	render() {
