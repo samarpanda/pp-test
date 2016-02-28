@@ -48,7 +48,20 @@ const config = {
 			template: webPath('index.html'),
 			inject: 'body'
 		})
-	]
+	],
+	devServer: {
+		quite: false,
+		noInfo: false,
+		stats: {
+			assets: false,
+			colors: true,
+			version: false,
+			hash: false,
+			timings: false,
+			chunks: false,
+			chunkModules: false
+		}
+	}
 };
 
 // production mode
